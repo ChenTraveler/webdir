@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>购物车</title>
+    <link rel="stylesheet" href="/css/reset3.0.css" />
+    <link rel="stylesheet" href="/css/cart.css" />
+    <script src="/axios/dist/axios.min.js"></script>
+    <script src="/qs/dist/qs.js"></script>
+  </head>
+  <body>
+    <%# console.log(data) %> <% let uname='';if(data[0]){uname = data[0].username} %>
+    <div class="container cart_container" data-uname="<%= uname %>">
+      <!-- 头部 -->
+      <% let glen=0,hc='header'; if(data){glen=data.length} if(!glen){hc='header empty'} %>
+      <header class="<%= hc %>">
+        <div class="title">
+          <h2>购物车<span><%= '('+glen+')' %></span></h2>
+          <span class="aperate">管理</span>
+        </div>
+        <div class="text">共<span><%= glen %></span>件宝贝</div>
+      </header>
+      <!-- 主体 -->
+      <main class="main">
+        <% let goods={};if(data){ data.forEach((i,index)=>{ if(!goods[i.shoptitle]){ goods[i.shoptitle]=[];goods[i.shoptitle].push(index)}else{goods[i.shoptitle].push(index)}}) %> <% for(let k in goods){ %>
+        <div class="store">
+          <div class="top">
+            <div class="left">
+              <div class="choice">
+                <div class="pic"></div>
+              </div>
+              <div class="pic">
+                <img src="/img/cart/tmall_icon.webp" alt="" />
+              </div>
+              <div class="title ellipsis"><%= k %></div>
+              <span>&gt;</span>
+            </div>
+            <div class="right">
+              <!-- <div class="text">领券</div> -->
+            </div>
+          </div>
+          <% goods[k].forEach(i=>{ let goodsc = 'goods';if(data[i].flag == 't'){goodsc = 'goods active'}%>
+          <div class="<%= goodsc %>" data-id="<%= data[i].id %>">
+            <div class="choice">
+              <div class="pic"></div>
+            </div>
+            <div class="pic">
+              <div class="bg" style="background-image: url('<%= data[i].src %>')"></div>
+              <div class="mark"></div>
+            </div>
+            <div class="details">
+              <div class="title ellipsis-2"><%= data[i].title %></div>
+              <div class="model">
+                <div>
+                  <div class="option ellipsis-2"><%= data[i].options %></div>
+                  <span>﹀</span>
+                </div>
+              </div>
+              <div class="bottom">
+                <div class="price">
+                  <span class="rmb">￥</span>
+                  <span class="num"><%= data[i].price %></span>
+                </div>
+                <div class="count">
+                  <img class="reduce" src="/img/cart/reduce.png" alt="" />
+                  <input type="text" value="<%= data[i].num %>" />
+                  <img class="add" src="/img/cart/add.png" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+        <% }} %>
+        <% let ec='empty active';if(glen){ec='empty'} %>
+        <div class="<%= ec %>">
+          <div class="pic">
+            <img src="../img/cart/searc.webp" alt="" />
+          </div>
+          <p class="text1">购物车竟然是空的</p>
+          <p class="text2">再忙，也要记得买点什么犒赏自己~</p>
+        </div>
+      </main>
+      <!-- 瀑布 -->
+      <section class="waterfall">
+        <header>
+          <img src="../img/cart/maybelove.png" alt="" />
+        </header>
+        <div class="goods_list">
+          <div class="goods">
+            <a href="#">
+              <div class="pic">
+                <img src="../img/cart/waterfall_goods1.webp" alt="" />
+              </div>
+              <div class="details">
+                <div class="title ellipsis-3">其妙爆浆曲奇小丸子夹心饼干巧克力味小零食网红爆款推荐【农】</div>
+                <div class="price">
+                  <span class="rmb">￥</span>
+                  <span class="num">16.9</span>
+                  <span class="count">95人购买</span>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="goods">
+            <a href="#">
+              <div class="pic">
+                <img src="../img/cart/waterfall_goods1.webp" alt="" />
+              </div>
+              <div class="details">
+                <div class="title ellipsis-3">其妙爆浆曲奇小丸子夹心饼干巧克力味小零食网红爆款推荐【农】</div>
+                <div class="price">
+                  <span class="rmb">￥</span>
+                  <span class="num">16.9</span>
+                  <span class="count">95人购买</span>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="goods">
+            <a href="#">
+              <div class="pic">
+                <img src="../img/cart/waterfall_goods1.webp" alt="" />
+              </div>
+              <div class="details">
+                <div class="title ellipsis-3">其妙爆浆曲奇小丸子夹心饼干巧克力味小零食网红爆款推荐【农】</div>
+                <div class="price">
+                  <span class="rmb">￥</span>
+                  <span class="num">16.9</span>
+                  <span class="count">95人购买</span>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="goods">
+            <a href="#">
+              <div class="pic">
+                <img src="../img/cart/waterfall_goods1.webp" alt="" />
+              </div>
+              <div class="details">
+                <div class="title ellipsis-3">其妙爆浆曲奇小丸子夹心饼干巧克力味小零食网红爆款推荐【农】</div>
+                <div class="price">
+                  <span class="rmb">￥</span>
+                  <span class="num">16.9</span>
+                  <span class="count">95人购买</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+      <!-- 合计 -->
+      <section class="total">
+        <div class="choice">
+          <div class="pic"></div>
+          <span>全选</span>
+        </div>
+        <div class="right settlement active">
+          <div class="price">
+            <span class="text">合计:</span>
+            <div>
+              <span class="rmb">￥</span>
+              <span class="num">0</span>
+            </div>
+          </div>
+          <div class="submit disabled">结算(<span></span>)</div>
+        </div>
+        <div class="right aperate">
+          <div class="collection">移入收藏夹</div>
+          <div class="del">删除</div>
+        </div>
+      </section>
+      <!-- 底部 -->
+      <footer class="footer">
+        <div class="index">
+          <span class="pic"></span>
+          <span class="text">首页</span>
+        </div>
+        <div class="cart active">
+          <span class="pic"></span>
+          <span class="text">购物车</span>
+        </div>
+        <div class="mine">
+          <span class="pic"></span>
+          <span class="text">我的淘宝</span>
+        </div>
+      </footer>
+    </div>
+  </body>
+  <script src="/js/cart.js"></script>
+</html>

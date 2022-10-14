@@ -1,0 +1,226 @@
+// 头部
+.header {
+  position: relative;
+  width: 100vw;
+  height: 28.53333vw;
+  padding: 2.4vw 3.2vw 0;
+  overflow: hidden;
+  color: #fff;
+  .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    img {
+      width: 100vw;
+      margin-top: -1.06667vw;
+      filter: blur(0.53333vw);
+    }
+    div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+  }
+  .top {
+    position: relative;
+    z-index: 9998;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 11.73333vw;
+    .left {
+      display: flex;
+      justify-content: center;
+      width: 20vw;
+      height: 8vw;
+      border: 1px solid #ccc;
+      border-radius: 10vw;
+      overflow: hidden;
+      > * {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      > div {
+        flex: 1;
+        font-size: 4.26667vw;
+      }
+      > span {
+        color: #999;
+      }
+      .back_btn {
+        font-family: 'fangsong';
+        font-weight: 900;
+      }
+      .menu {
+        span {
+          display: flex;
+          align-items: center;
+          >*{
+            border-radius: 50%;
+            background-color: #fff;
+          }
+          i{
+            width: 0.8vw;
+            height: 0.8vw;
+          }
+          b {
+            width: 1.2vw;
+            height: 1.2vw;
+            margin: 0 1vw;
+          }
+        }
+      }
+    }
+    .right {
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      // 标题
+      .title {
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        align-items: center;
+        height: 7.7333vw;
+        h1 {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          span {
+            max-width: 46.66667vw;
+            font-size: 4.53333vw;
+            font-weight: normal;
+          }
+          img {
+            width: 3.2vw;
+            height: 3.2vw;
+            margin: 0 2.66667vw 0 1.06667vw;
+          }
+        }
+        .follow {
+          position: relative;
+          .bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 16vw;
+            height: 7.73333vw;
+          }
+          .cont {
+            display: none;
+            // display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 16.5333vw;
+            height: 7.7333vw;
+            .heart {
+              position: relative;
+              width: 3.6vw;
+              height: 2.8vw;
+              margin-right: 1.2vw;
+            }
+            span {
+              font-size: 3.4667vw;
+            }
+          }
+          .cont.active {
+            display: flex;
+          }
+        }
+      }
+      // 细节
+      .detail {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 2.4vw;
+        > img {
+          width: 7.5077vw;
+          margin-right: 1.6vw;
+        }
+        .starts {
+          margin-left: 0.8vw;
+          img {
+            width: 10.6667vw;
+            margin-right: 0.5333vw;
+          }
+        }
+      }
+    }
+  }
+  .bottom {
+    position: relative;
+    display: flex;
+    width: 100vw;
+    height: 14.4vw;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    z-index: 9998;
+    .search {
+      display: flex;
+      width: 18.13333vw;
+      height: 8vw;
+      background-color: rgba(238, 238, 238, 0.4);
+      border-radius: 4vw;
+      justify-content: flex-start;
+      align-items: center;
+      overflow: hidden;
+      img {
+        width: 5.33333vw;
+        height: 5.33333vw;
+        margin-left: 1.33333vw;
+        margin-right: 1.33333vw;
+      }
+      span {
+        font-size: 4vw;
+      }
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      width: 73.33333vw;
+      height: 8vw;
+      margin-left: 5.33333vw;
+      overflow: hidden;
+      a {
+        position: relative;
+        height: 6.4vw;
+        color: #fff;
+        font-size: 4vw;
+        margin-right: 6.4vw;
+      }
+      a.active::after {
+        content: '';
+        position: absolute;
+        left: 0.26667vw;
+        bottom: 0;
+        width: 7.4667vw;
+        height: 0.53333vw;
+        border-radius: 0.53333vw;
+        background-color: #fff;
+      }
+    }
+  }
+  .fixed_nav {
+    position: fixed;
+    display: none;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    height: 0;
+    z-index: 9999;
+    height: 14.4vw;
+    overflow: hidden;
+    .bottom {
+      padding-left: 3.2vw;
+    }
+  }
+}

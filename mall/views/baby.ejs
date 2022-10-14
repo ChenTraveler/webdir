@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>神舟电脑旗舰店</title>
+    <link rel="stylesheet" href="/css/iconfont/iconfont.css" />
+    <link rel="stylesheet" href="/css/reset3.0.css" />
+    <link rel="stylesheet" href="/css/index_header.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <script src="/axios/dist/axios.min.js"></script>
+    <script src="/qs/dist/qs.js"></script>
+  </head>
+  <body>
+    <div class="container baby_container">
+      <!-- 头部 -->
+      <%- include('index_header',{header:header[0],page:{index:'',baby:'active',hd:'',fl:'',wt:''}}) %>
+      <!-- 主体 -->
+      <main class="main">
+        <div class="top">
+          <div class="comprehensive active">综合</div>
+          <div class="sales">销量</div>
+          <div class="new">新品</div>
+          <div class="price">
+            <span>价格</span>
+            <span class="tips">
+              <i class="iconfont icon-triangleupfill"></i>
+              <i class="iconfont icon-triangledownfill"></i>
+            </span>
+          </div>
+          <div class="tab"><i class="iconfont icon-cascades"></i></div>
+        </div>
+        <div class="goods_list"></div>
+      </main>
+      <!-- 尾部 -->
+      <footer class="footer">
+        <div></div>
+        <span>到底啦</span>
+        <div></div>
+      </footer>
+    </div>
+  </body>
+  <script src="/js/custom.js"></script>
+  <script src="/js/index_header.js"></script>
+  <script src="/js/baby.js"></script>
+</html>

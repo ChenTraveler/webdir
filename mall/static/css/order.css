@@ -1,0 +1,296 @@
+body {
+  background-color: #f2f2f2;
+  height: 100%;
+}
+.container .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 90px;
+  background-color: #f2f2f2;
+}
+.container .header > * {
+  width: 100%;
+  display: flex;
+}
+.container .header .search {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5vw;
+  align-items: center;
+}
+.container .header .search .frame {
+  display: flex;
+  align-items: center;
+  width: 70%;
+  height: 30px;
+  padding-right: 20px;
+  background-color: #fff;
+  border-radius: 30px;
+}
+.container .header .search .frame i {
+  font-size: 14px;
+  margin: 0 10px;
+}
+.container .header .search .frame input {
+  flex: 1;
+  outline: none;
+  border: 0;
+  font-size: 14px;
+}
+.container .header .search .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  padding: 0 20px;
+  font-size: 14px;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 2px;
+  background-color: #ff5000;
+  border-radius: 30px;
+}
+.container .header .nav > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+}
+.container .header .nav > div span {
+  position: relative;
+  font-size: 14px;
+}
+.container .header .nav > div.active span {
+  color: #ff5000;
+}
+.container .header .nav > div.active span::after {
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background-color: #ff5000;
+}
+.container .main {
+  margin-top: 90px;
+  overflow: hidden;
+  padding: 0 2vw;
+}
+.container .main .order {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 3vw;
+  width: 100%;
+  padding: 3.2vw;
+  background-color: #fff;
+  border-radius: 3.2vw;
+}
+.container .main .order > div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.container .main .order .top {
+  margin-bottom: 3vw;
+}
+.container .main .order .top .left {
+  display: flex;
+  align-items: center;
+}
+.container .main .order .top .left .pic {
+  font-size: 0;
+}
+.container .main .order .top .left .pic img {
+  width: 6.4vw;
+}
+.container .main .order .top .left .title {
+  font-size: 0;
+  margin-left: 1.6vw;
+}
+.container .main .order .top .left .title span {
+  font-size: 4.8vw;
+  font-weight: bold;
+}
+.container .main .order .top .left .title i {
+  color: #ccc;
+  font-size: 4.26667vw;
+}
+.container .main .order .top .status {
+  display: flex;
+  align-items: center;
+  font-size: 4.26667vw;
+  color: #ff5000;
+}
+.container .main .order .goods {
+  flex-wrap: wrap;
+  margin-bottom: 3vw;
+}
+.container .main .order .goods > div {
+  width: 100%;
+  display: flex;
+}
+.container .main .order .goods .details {
+  flex-wrap: wrap;
+  margin-bottom: 2.4vw;
+}
+.container .main .order .goods .details .content {
+  width: 100%;
+  display: flex;
+}
+.container .main .order .goods .details .content .pic {
+  width: 28vw;
+  border-radius: 2.4vw;
+  overflow: hidden;
+  margin: 0 3vw 3vw 0;
+}
+.container .main .order .goods .details .content .pic img {
+  width: 100%;
+}
+.container .main .order .goods .details .content .parameter {
+  width: 20vw;
+  flex: 1;
+}
+.container .main .order .goods .details .content .parameter .title {
+  font-size: 4.26667vw;
+  font-weight: bold;
+  margin-bottom: 1.6vw;
+}
+.container .main .order .goods .details .content .parameter .option {
+  font-size: 3.6vw;
+  color: #999;
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow: hidden;
+  margin-bottom: 1.6vw;
+}
+.container .main .order .goods .details .content .parameter .supplement > * {
+  margin: 1.6vw 0;
+}
+.container .main .order .goods .details .content .parameter .supplement .text {
+  font-size: 4.2vw;
+}
+.container .main .order .goods .details .content .parameter .supplement .label {
+  color: #ff5000;
+  border: 1px solid #ff5000;
+  font-size: 2.4vw;
+}
+.container .main .order .goods .details .content .total {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+.container .main .order .goods .details .content .total .price {
+  width: 100%;
+  margin-bottom: 1.6vw;
+}
+.container .main .order .goods .details .content .total .price span {
+  font-size: 3.2vw;
+  font-weight: bold;
+}
+.container .main .order .goods .details .content .total .price span b {
+  font-size: 4.2vw;
+}
+.container .main .order .goods .details .content .total .count {
+  color: #999;
+}
+.container .main .order .goods .details .Insurance {
+  font-weight: bold;
+  font-size: 4vw;
+}
+.container .main .order .goods .price {
+  justify-content: flex-end;
+  font-size: 0;
+  height: 5.6vw;
+  overflow: hidden;
+  font-weight: bold;
+}
+.container .main .order .goods .price span {
+  font-size: 3.2vw;
+  color: #999;
+  white-space: nowrap;
+}
+.container .main .order .goods .price i {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 3.7333vw;
+}
+.container .main .order .goods .price b {
+  font-size: 4.2667vw;
+}
+.container .main .order .goods .price .payment {
+  color: #000;
+}
+.container .main .order .goods .price .payment i {
+  font-weight: bold;
+}
+.container .main .order .btn_list {
+  position: relative;
+  justify-content: flex-end;
+}
+.container .main .order .btn_list .more {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  color: #999;
+  font-size: 3.73333vw;
+}
+.container .main .order .btn_list .more.active + * + .morebtn {
+  display: block;
+}
+.container .main .order .btn_list .btn {
+  display: flex;
+}
+.container .main .order .btn_list .btn > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  font-size: 3.73333vw;
+  border-radius: 5vw;
+  width: 22vw;
+  padding: 1.6vw 0;
+  margin-left: 3vw;
+}
+.container .main .order .btn_list .btn .active {
+  color: #ff5000;
+  border-color: #ff5000;
+}
+.container .main .order .btn_list .morebtn {
+  display: none;
+  position: absolute;
+  left: -2vw;
+  z-index: 9;
+  top: 0;
+  transform: translateY(-100%);
+  width: 16vw;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 1vw;
+  padding-top: 1.6vw;
+}
+.container .main .order .btn_list .morebtn > div {
+  text-align: center;
+  font-size: 3vw;
+  margin-bottom: 1.6vw;
+}
+.container .main .order .btn_list .morebtn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  border: 1vw solid transparent;
+  border-bottom: none;
+  transform: translate(-50%, 100%);
+  height: 0;
+  border-top-color: rgba(0, 0, 0, 0.8);
+}

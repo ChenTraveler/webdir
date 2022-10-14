@@ -1,0 +1,326 @@
+body {
+  background-color: #f2f2f2;
+}
+.container {
+  position: relative;
+  width: 100%;
+  padding: 0 5vw;
+  user-select: none;
+}
+.container .address {
+  display: flex;
+  width: 100%;
+  height: 24vw;
+  background-color: #fff;
+  margin: 4vw 0;
+  border-radius: 2.4vw;
+}
+.container .address .left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 12vw;
+  height: 100%;
+}
+.container .address .left .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 7vw;
+  height: 7vw;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #ff5000;
+}
+.container .address .left .icon i {
+  font-size: 5vw;
+  color: #fff;
+}
+.container .address .right {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  width: 76vw;
+  padding-right: 6vw;
+  height: 100%;
+}
+.container .address .right .user {
+  margin-bottom: 1.6vw;
+}
+.container .address .right .user .name {
+  font-size: 4.4vw;
+  margin-right: 1.6vw;
+}
+.container .address .right .user .phone {
+  font-size: 3.2vw;
+  color: #999;
+}
+.container .address .right .text {
+  font-size: 3.2vw;
+}
+.container .address .right i {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  color: #999;
+  transform: translateY(-50%);
+}
+.container .main {
+  width: 100%;
+  background-color: #fff;
+  padding-bottom: 3vw;
+  border-radius: 2.4vw;
+}
+.container .main .store {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  font-size: 3.73333vw;
+  border-radius: 3.2vw;
+}
+.container .main .store .top {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 11vw;
+}
+.container .main .store .top .left {
+  display: flex;
+  align-items: center;
+}
+.container .main .store .top .left .pic img {
+  width: 4vw;
+}
+.container .main .store .top .left .title {
+  margin-left: 3vw;
+}
+.container .main .store .goods {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 6px 12px 6px 0;
+}
+.container .main .store .goods .pic {
+  width: 24vw;
+  height: 24vw;
+}
+.container .main .store .goods .pic img {
+  width: 100%;
+}
+.container .main .store .goods .details {
+  width: 50vw;
+  max-width: 580px;
+  margin: 3px 0 0 12px;
+}
+.container .main .store .goods .details .model {
+  width: 100%;
+  display: flex;
+  margin-top: 6px;
+}
+.container .main .store .goods .details .model > div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #ececec4c;
+  padding: 4px 6px;
+  color: #999;
+  font-size: 13px;
+  line-height: 16px;
+}
+.container .main .store .goods .details .model > div div {
+  line-height: 20px;
+  margin-right: 6px;
+}
+.container .main .store .goods .details .model > div span {
+  height: 12px;
+  font-weight: bold;
+  font-family: monospace;
+}
+.container .main .store .goods .details .bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 35px;
+}
+.container .main .store .goods .details .bottom .price {
+  color: #ff5000;
+  font-size: 0;
+}
+.container .main .store .goods .details .bottom .price span {
+  font-size: 13px;
+}
+.container .main .store .goods .details .bottom .count {
+  display: flex;
+}
+.container .main .store .goods .details .bottom .count img {
+  width: 22px;
+  height: 22px;
+}
+.container .main .store .goods .details .bottom .count input {
+  width: 40px;
+  height: 22px;
+  text-align: center;
+  border: 1px solid #e7e7e7;
+}
+.container .bottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+  z-index: 999;
+}
+.container .bottom .total {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+.container .bottom .total .text {
+  font-size: 14px;
+}
+.container .bottom .total .text .count {
+  color: #999;
+}
+.container .bottom .total .price {
+  color: #ff5000;
+  font-size: 0;
+}
+.container .bottom .total .price span {
+  font-size: 14px;
+}
+.container .bottom .total .price .num {
+  margin-left: 4px;
+  font-size: 20px;
+}
+.container .bottom .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  padding: 0 20px;
+  margin-right: 20px;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 30px;
+  background-image: linear-gradient(90deg, #ff9000 0%, #ff5000 98%);
+}
+.alertbox {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 990;
+}
+.alertbox .bg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 998;
+}
+.alertbox .alert {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 999;
+  display: flex;
+  flex-wrap: wrap;
+  width: 60vw;
+  max-width: 300px;
+  height: 120px;
+  transform: translate(-50%, -100%);
+  background-color: rgba(2, 2, 2, 0.6);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.alertbox .alert > div {
+  display: flex;
+  width: 100%;
+  color: #fff;
+}
+.alertbox .alert .txt {
+  height: 60%;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+.alertbox .alert .btn {
+  height: 40%;
+  align-items: center;
+  font-size: 14px;
+  border-top: 2px solid #ccc;
+}
+.alertbox .alert .btn button {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #fff;
+  border: 0;
+  background-color: transparent;
+}
+.alertbox .alert .btn .rej {
+  border-right: 1px solid #ccc;
+}
+.alertbox .alert .btn .res {
+  border-left: 1px solid #ccc;
+}
+.alertbox .alert .btn button.click {
+  animation: click 300ms linear;
+}
+.alertbox.active {
+  display: block;
+}
+.alertbox.active .alert {
+  animation: fadeIn 500ms linear forwards;
+}
+.alertbox.back {
+  display: block;
+  z-index: 9999;
+}
+.alertbox.back .alert {
+  display: none;
+}
+.alertbox.back .bg {
+  display: flex;
+  background-color: #fff;
+  justify-content: center;
+  padding: 200px 40px 0;
+}
+.alertbox.back .bg span {
+  font-size: 6vw;
+}
+.alertbox.back .bg span a {
+  color: #ff5000;
+  text-decoration: underline;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes click {
+  0% {
+    background-color: transparent;
+    color: #fff;
+  }
+  50% {
+    background-color: #fff;
+    color: #000;
+  }
+  100% {
+    background-color: transparent;
+    color: #fff;
+  }
+}

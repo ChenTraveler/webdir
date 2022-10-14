@@ -1,0 +1,179 @@
+.login_container {
+  padding: 0 20px;
+  a {
+    color: #ff5000;
+    font-size: 16px;
+  }
+  .logo {
+    text-align: center;
+    div {
+      width: 80px;
+      height: 80px;
+      background: url(../img/login/logo.png) no-repeat;
+      background-size: contain;
+      margin: 40px auto 0;
+    }
+  }
+  // 切换
+  .active_sms {
+    .sms {
+      display: block;
+    }
+  }
+  .active_apwd {
+    .apwd {
+      display: block;
+    }
+  }
+  // 手机号登录
+  .sms {
+    div {
+      // 电话前缀下拉菜单
+      select {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 60px;
+        height: 100%;
+        border: 0;
+        background: url(../img/login/arrow.png) no-repeat right center;
+        background-size: 24px;
+        color: transparent;
+        option {
+          color: #555;
+        }
+      }
+      // 验证码按钮
+      a {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+      }
+    }
+    // 电话前缀
+    .phone {
+      position: relative;
+      &::before {
+        content: attr(data-content);
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        font-size: 14px;
+        text-align: center;
+      }
+      input {
+        padding-left: 60px;
+      }
+    }
+  }
+  // 账号密码登录
+  .apwd {
+    div {
+      // 密码显示隐藏按钮
+      i {
+        position: absolute;
+        top: 50%;
+        width: 20px;
+        height: 20px;
+        font-size: 20px;
+        right: 20px;
+        transform: translateY(-50%) rotateY(180deg);
+      }
+    }
+  }
+  // 表单
+  form {
+    > .sms,
+    > .apwd {
+      display: none;
+      > div {
+        position: relative;
+        margin-top: 40px;
+        border-bottom: 1px solid #ff5000;
+      }
+    }
+    input {
+      border: 0;
+      width: 100%;
+      line-height: 30px;
+      font-size: 16px;
+      padding-left: 5px;
+    }
+    // 登录按钮
+    .btn {
+      height: 45px;
+      border-radius: 35px;
+      background: linear-gradient(90deg, #ff9000, #ff5000);
+      color: #fff;
+      margin: 0 0 30px;
+    }
+    .btnlist {
+      display: flex;
+      justify-content: space-between;
+      padding-right: 10px;
+      margin: 20px 0 35px;
+      // 切换按钮
+      .tap {
+        display: inline-block;
+        color: #555;
+        font-size: 14px;
+      }
+      .rej{
+        font-size: 14px;
+      }
+    }
+
+    // 协议
+    .agreement {
+      position: relative;
+      padding-left: 25px;
+      font-size: 14px;
+      i {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 15px;
+      }
+      i.icon-roundcheckfill {
+        font-size: 15;
+        color: #ff5000;
+      }
+      // input {
+      //   position: absolute;
+      //   top: 0;
+      //   left: 0;
+      //   width: 15px;
+      //   height: 15px;
+      //   border-radius: 50%;
+      //   border: 2px solid #e9e9e9;
+      //   box-sizing: border-box;
+      //   &::before {
+      //     content: '';
+      //     position: absolute;
+      //     top: 3px;
+      //     left: 5px;
+      //     width: 3px;
+      //     height: 6px;
+      //     border: solid #fff;
+      //     border-width: 0 1px 1px 0;
+      //     transform: rotate(45deg);
+      //     opacity: 0;
+      //   }
+      // }
+      label {
+        color: #666;
+      }
+    }
+    // .agreement.active {
+    //   input {
+    //     background-color: #ff5000;
+    //     border: 0;
+    //     &::before {
+    //       opacity: 1;
+    //     }
+    //   }
+    // }
+  }
+}

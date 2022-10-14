@@ -1,0 +1,86 @@
+<header class="header">
+  <div class="bg">
+    <img src="/img/index/header_bg.webp" alt="" />
+    <div></div>
+  </div>
+  <div class="top">
+    <div class="left">
+      <div class="back_btn">&lt;</div>
+      <span>|</span>
+      <div class="menu"><span><i></i><b></b><i></i></span></div>
+    </div>
+    <div class="right">
+      <!-- 标题 -->
+      <div class="title">
+        <h1>
+          <% let title; if(header.title){ title=header.title }else{ title='神舟电脑旗舰店' } %>
+          <span class="ellipsis"><%= title %></span>
+          <img src="/img/index/title.arrow.webp" alt="" />
+        </h1>
+
+        <div class="follow">
+          <% let [unfc,fc] = ['cont active','cont']; if(header.isfollow == 'f'){unfc='cont active';fc='cont'}else{unfc='cont';fc='cont active'} %>
+          <img class="bg" src="/img/index/follow_bg.webp" alt="" />
+          <div class="<%= unfc %>">
+            <img class="heart" src="/img/index/follow_heart.webp" alt="" />
+            <span>关注</span>
+          </div>
+          <div class="<%= fc %>">
+            <span>已关注</span>
+          </div>
+        </div>
+      </div>
+      <!-- 细节 -->
+      <div class="detail">
+        <img src="../img/index/tmall_icon.webp" alt="" />
+        <div class="starts">
+          <span>综合体验</span>
+          <% let star; if(header.star){ star=header.star }else{ star='/img/index/starts_fourPointFive.webp' } %>
+          <img src="<%= star %>" alt="" />
+        </div>
+        <% let num; if(header.fans){ header.fans>10000?num=parseInt(header.fans/1000)/10.0 + '万':num=header.fans }else{ num='' } %>
+        <span>粉丝数<%= num %></span>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+    <!-- 搜索框 -->
+    <div class="search">
+      <img src="../img/index/search.webp" alt="" />
+      <span>搜索</span>
+    </div>
+    <!-- 导航 -->
+    <nav class="nav">
+      <% if(page){ %>
+      <a class="<%= page.index %>" href="/index">首页</a>
+      <a class="<%= page.baby %>" href="/baby">宝贝</a>
+      <a class="<%= page.hd %>" href="/baby">活动</a>
+      <a class="<%= page.fl %>" href="/baby">分类</a>
+      <a class="<%= page.wt %>" href="/baby">微淘</a>
+      <% } %>
+    </nav>
+  </div>
+  <div class="fixed_nav">
+    <div class="bg">
+      <img src="../img/index/header_bg.webp" alt="" />
+      <div></div>
+    </div>
+    <div class="bottom">
+      <!-- 搜索框 -->
+      <div class="search">
+        <img src="../img/index/search.webp" alt="" />
+        <span>搜索</span>
+      </div>
+      <!-- 导航 -->
+      <nav class="nav">
+        <% if(page){ %>
+        <a class="<%= page.index %>" href="/index">首页</a>
+        <a class="<%= page.baby %>" href="/baby">宝贝</a>
+        <a class="<%= page.hd %>" href="/baby">活动</a>
+        <a class="<%= page.fl %>" href="/baby">分类</a>
+        <a class="<%= page.wt %>" href="/baby">微淘</a>
+        <% } %>
+      </nav>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,58 @@
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  background-color: #fff;
+  border-top: 1px solid #e7e7e7;
+  border-bottom: 1px solid #f8f8f8;
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 25%;
+    height: 36px;
+    margin: 4px 0;
+    .pic {
+      width: 20px;
+      height: 20px;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .text {
+      width: 100%;
+      margin: 2px 0;
+      font-size: 12px;
+      text-align: center;
+      line-height: 10px;
+      transform: scale(0.833333333);
+    }
+  }
+  div.active {
+    .text {
+      color: #ff5000;
+    }
+  }
+  .index .pic {
+    background-image: url(../img/cart/index.png);
+  }
+  .cart .pic {
+    background-image: url(../img/cart/cart.png);
+  }
+  .mine .pic {
+    background-image: url(../img/cart/mine.png);
+  }
+  .index.active .pic {
+    background-image: url(../img/cart/index-active.png);
+  }
+  .cart.active .pic {
+    background-image: url(../img/cart/cart-active.png);
+  }
+  .mine.active .pic {
+    background-image: url(../img/cart/mine-active.png);
+  }
+}

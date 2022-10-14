@@ -1,0 +1,452 @@
+body {
+  background-color: #f2f2f2;
+  margin-bottom: 160px;
+}
+.cart_container {
+  position: relative;
+  max-width: 768px;
+  margin: 0 auto;
+  color: #333;
+  overflow: hidden;
+  user-select: none;
+  // 头部
+  .header {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    color: #fff;
+    padding: 20px 12px;
+    background: linear-gradient(-90deg, #ff5000 0%, #ff8400 100%);
+    .title {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding-bottom: 10px;
+      h2 {
+        font-size: 20px;
+      }
+      .aperate {
+        font-size: 15px;
+      }
+    }
+    .text {
+      font-size: 12px;
+      height: 100px;
+    }
+  }
+  .header.empty {
+    .aperate {
+      display: none;
+    }
+    .text {
+      display: none;
+    }
+  }
+  // 主体
+  .main {
+    position: relative;
+    z-index: 1;
+    margin: 85px 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    padding: 0 12px;
+    .store {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      margin-top: 12px;
+      background-color: #fff;
+      font-size: 14px;
+      border-radius: 12px;
+      .choice {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 45px;
+      }
+      .top {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 40px;
+        .left {
+          display: flex;
+          align-items: center;
+          .pic {
+            img {
+              width: 18px;
+            }
+          }
+          .title {
+            margin-left: 10px;
+          }
+          > span {
+            color: #999;
+            font-family: 'fangsong';
+            font-weight: bold;
+            margin-left: 3px;
+          }
+        }
+        .right {
+          display: flex;
+          align-items: center;
+          .text {
+            color: #999;
+            margin-right: 12px;
+          }
+        }
+      }
+      .goods {
+        display: flex;
+        width: 100%;
+        padding: 6px 12px 6px 0;
+        .pic {
+          position: relative;
+          display: flex;
+          align-items: center;
+          .bg {
+            width: 90px;
+            height: 90px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: 3px;
+          }
+          .mark {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 90px;
+            height: 90px;
+            background-color: #00000006;
+          }
+        }
+        .details {
+          width: 50vw;
+          max-width: 580px;
+          margin: 3px 0 0 12px;
+          .title{
+            height: 19px;
+          }
+          .model {
+            width: 100%;
+            display: flex;
+            margin-top: 6px;
+            > div {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              background-color: #ececec4c;
+              padding: 4px 6px;
+              color: #999;
+              font-size: 13px;
+              line-height: 16px;
+              div {
+                line-height: 20px;
+                margin-right: 6px;
+              }
+              span {
+                height: 12px;
+                font-weight: bold;
+                font-family: monospace;
+              }
+            }
+          }
+          .bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 35px;
+            .price {
+              color: #ff5000;
+              font-size: 0;
+              span {
+                font-size: 13px;
+              }
+            }
+            .count {
+              display: flex;
+              img {
+                width: 22px;
+                height: 22px;
+              }
+              input {
+                width: 40px;
+                height: 22px;
+                text-align: center;
+                border: 1px solid #e7e7e7;
+              }
+            }
+          }
+        }
+      }
+      .goods:last-child{
+        padding-bottom: 12px;
+      }
+    }
+    .empty {
+      display: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      .pic {
+        text-align: center;
+        img {
+          width: 24vw;
+        }
+      }
+      p {
+        width: 100%;
+        text-align: center;
+      }
+      .text1 {
+        margin-top: 20px;
+        color: #666;
+        font-size: 4.26667vw;
+      }
+      .text2 {
+        margin-top: 12px;
+        color: #999;
+        font-size: 3.46667vw;
+      }
+    }
+    .empty.active {
+      display: flex;
+    }
+  }
+  // 合计
+  .total {
+    position: fixed;
+    bottom: 43px;
+    z-index: 998;
+    display: flex;
+    justify-content: space-between;
+    height: 54px;
+    padding: 0 12px;
+    width: 100%;
+    max-width: 768px;
+    background-color: #fff;
+    .choice {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      .pic {
+        margin-right: 5px;
+      }
+    }
+    .right {
+      display: none;
+      align-items: center;
+    }
+    .right.active {
+      display: flex;
+    }
+    .settlement {
+      .price {
+        display: flex;
+        .text {
+          font-size: 14px;
+        }
+        div {
+          font-size: 0;
+          span {
+            font-size: 15px;
+            color: #ff5000;
+          }
+        }
+      }
+      .submit {
+        font-size: 15px;
+        padding: 8px 18px;
+        margin-left: 10px;
+        background-image: linear-gradient(90deg, #ff9000 0%, #ff5000 98%);
+        color: #fff;
+        line-height: 15px;
+        border-radius: 80px;
+      }
+      .submit.disabled {
+        pointer-events: none;
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+    .aperate {
+      font-size: 13px;
+      div {
+        border-radius: 33px;
+        border: 1px solid;
+        line-height: 15px;
+      }
+      .collection {
+        padding: 4px 9px;
+        color: #ff5000;
+        border-color: #ff5000;
+      }
+      .del {
+        padding: 4px 13px;
+        margin-left: 8px;
+        color: #fc0a0a;
+        border-color: #fc0a0a;
+      }
+    }
+  }
+  .total.empty {
+    display: none;
+  }
+  // 底部
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background-color: #fff;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #f8f8f8;
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 25%;
+      height: 36px;
+      margin: 4px 0;
+      .pic {
+        width: 20px;
+        height: 20px;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .text {
+        width: 100%;
+        margin: 2px 0;
+        font-size: 12px;
+        text-align: center;
+        line-height: 10px;
+        transform: scale(0.833333333);
+      }
+    }
+    div.active {
+      .text {
+        color: #ff5000;
+      }
+    }
+    .index .pic {
+      background-image: url(../img/cart/index.png);
+    }
+    .cart .pic {
+      background-image: url(../img/cart/cart.png);
+    }
+    .mine .pic {
+      background-image: url(../img/cart/mine.png);
+    }
+    .index.active .pic {
+      background-image: url(../img/cart/index-active.png);
+    }
+    .cart.active .pic {
+      background-image: url(../img/cart/cart-active.png);
+    }
+    .mine.active .pic {
+      background-image: url(../img/cart/mine-active.png);
+    }
+  }
+  // 瀑布
+  .waterfall {
+    padding: 0 2vw 5.3333vw;
+    header {
+      width: 100%;
+      padding: 3.2vw 0;
+      text-align: center;
+      img {
+        width: 42.93333vw;
+      }
+    }
+    .goods_list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .goods {
+        width: 45.6vw;
+        margin: 2.4vw 1.2vw 0;
+        background-color: #fff;
+        font-size: 3.2vw;
+        border-radius: 1.6vw;
+        .pic {
+          img {
+            width: 100%;
+          }
+        }
+        .details {
+          height: 23.73333vw;
+          padding: 3.2vw 2.6667vw 0;
+          .title {
+            height: 9vw;
+            color: #333;
+            font-size: 3.46667vw;
+          }
+          .price {
+            margin-top: 2.93333vw;
+            .rmb {
+              color: #ff5000;
+            }
+            .num {
+              color: #ff5000;
+              font-size: 3.73333vw;
+            }
+            .count {
+              color: #999;
+            }
+          }
+        }
+      }
+    }
+  }
+  // 选中框
+  .choice {
+    > .pic {
+      width: 21px;
+      height: 21px;
+      background: url(../img/cart/circle.webp) no-repeat;
+      background-size: cover;
+    }
+  }
+  // 商品选中
+  .goods.active {
+    background-color: #00000006;
+    .choice {
+      > .pic {
+        background-image: url(../img/cart/circle_active.webp);
+      }
+    }
+  }
+  .choice.active {
+    > .pic {
+      background-image: url(../img/cart/circle_active.webp);
+    }
+  }
+  // 弹窗
+  .alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    display: none;
+    max-width: 75vw;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    padding: 0 10px;
+    line-height: 40px;
+    transform: translate(-50%, -100%);
+  }
+  // 规格选项
+  
+}

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title><%= data.title %></title>
+    <link rel="stylesheet" href="/Swiper/dist/css/swiper.min.css" />
+    <link rel="stylesheet" href="/css/iconfont/iconfont.css" />
+    <link rel="stylesheet" href="/css/reset3.0.css" />
+    <link rel="stylesheet" href="/css/details.css" />
+    <script src="/Swiper/dist/js/swiper.min.js"></script>
+    <script src="/axios/dist/axios.min.js"></script>
+    <script src="/qs/dist/qs.js"></script>
+  </head>
+  <body>
+    <!-- 初始化 -->
+    <% const getstrnum=n=>{let num;n>10000?num=parseInt(n/10000)+'万+':n>1000?num=parseInt(n/1000)+'000+':n>100?num=parseInt(n/100)+'00+':num=n;return num} %>
+    <% const strCarray = (str, a = ',') => {const pp = (str, b) => {if (str.includes(b)) {return str.split(b)} else {return str.split()}} %>
+    <% let arr = pp(str, a[0]);if (a[1]) {arr.forEach((i, index) => {arr[index] = pp(i, a[1]) %>
+    <% if (a[2]) {arr[index].forEach((i, index1) => {arr[index][index1] = pp(i, a[2]) %>
+    <% if (a[3]) {arr[index][index1].forEach((i, inddex2) => {arr[index][index1][inddex2] = pp(i, a[3])})}})}})} %>
+    <% return arr} %>
+    <% let optionnames,options,pricelist,minp=0,maxp=0,address,guarantees,parameter,stocks; %>
+    <% if(details){ if(details.option){options=strCarray(details.option,'#,')} %>
+    <% if(details.optionname){optionnames=strCarray(details.optionname,'/')} %>
+    <% if(details.pricelist){pricelist = JSON.parse(details.pricelist).price %>
+    <% minp=Math.min(...pricelist.flat(Infinity));maxp=Math.max(...pricelist.flat(Infinity))} %>
+    <% if(details.address){address=strCarray(details.address)} %>
+    <% if(details.guarantee){guarantees=strCarray(details.guarantee)} %>
+    <% if(details.parameter){parameter=details.parameter} %>
+    <% if(details.stock){stocks = JSON.parse(details.stock).stock}} %>
+    <!-- data,details,introduce,coupon,swiper -->
+      <div class="data">
+        <% if(data){ %>
+        <div class="dsid"><%= data.id %></div>
+        <div class="dsprice"><%= details.pricelist %></div>
+        <div class="dsstock"><%= details.stock %></div>
+        <div class="dsshoptitle"><%= data.shoptitle %></div>
+        <% } %>
+      </div>
+    <div class="container details_container">
+      <!-- 头部 -->
+      <header class="header">
+        <div class="swiper-container swiper_one">
+          <div class="swiper-wrapper">
+            <% if(swiper){swiper.forEach(i=>{ %>
+            <div class="swiper-slide">
+              <img src="<%= i.src %>" alt="" />
+            </div>
+            <% })} %>
+          </div>
+          <!--分页器 -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </header>
+      <!-- 主体 -->
+      <main class="main">
+        <div class="cardTitle">
+          <div class="price">
+            <span class="rmb">￥</span>
+            <% let pnum;if(minp != maxp){pnum=minp + '-' + maxp}else{pnum=minp} %>
+            <span class="num"><%= pnum %></span>
+            <% let cnum=0;if(coupon[0]){if(minp>coupon[0].constraint){cnum = minp - coupon[0].num %>
+            <span class="cnum">券后￥<b><%= cnum %></b>起</span>
+            <% }} %>
+          </div>
+          <% if(coupon[0]){ if(maxp>coupon[0].constraint){%>
+          <div class="Coupon">
+            <div class="left">
+              <div>商品券</div>
+              <div>满<span class="constraint"><%= coupon[0].constraint %></span>减<span class="num"><%= coupon[0].num %></span></div>
+            </div>
+            <div class="right">
+              <img src="../img/details/quan_bg.png" alt="" />
+              <span>领券<b>&gt;</b></span>
+            </div>
+          </div>
+          <% }} %>
+          <div class="tips">
+            <div>
+              <img src="/img/details/tmall_icon.png" alt="" />
+            </div>
+            <% let num=0;if(data.monthsales){num=getstrnum(data.monthsales)} %>
+            <span>月销<%= num %></span>
+          </div>
+          <% if(data.title){ %>
+          <div class="title"><%= data.title %></div>
+          <% }%>
+        </div>
+        <div class="cardParameter">
+          <div class="pFirst">
+            <div class="left">
+              <span>选择</span>
+            </div>
+            <div class="right">
+              <div class="top">
+                <% let gname='';if(details){if(details.optionname){gname=details.optionname}} %>
+                <span class="ellipsis"><%= gname %></span>
+                <b>&gt;</b>
+              </div>
+              <!-- <div class="bottom">
+                <%# let mlen=0;if(memorys){memorys.forEach(i=>{ %>
+                  <span><%# i %></span>
+                <%# });mlen=memorys.length} %>
+                <span>共<%# mlen %>种容量可选</span>
+              </div> -->
+            </div>
+          </div>
+          <div class="pSecond">
+            <div class="left">
+              <span>发货</span>
+            </div>
+            <div class="right">
+              <div class="top">
+                <div>
+                  <% if(address){address.forEach(i=>{%>
+                  <span class="ellipsis"><%= i %></span>
+                  <% })} %>
+                </div>
+              </div>
+              <p class="ellipsis">配送至: 南昌市 青山湖区 青山路街道</p>
+            </div>
+          </div>
+          <div class="pThird">
+            <div class="left">
+              <span>保障</span>
+            </div>
+            <div class="right">
+              <div class="top">
+                <div>
+                  <div>
+                    <% if(guarantees){guarantees.forEach(i=>{%>
+                    <span class=""><%= i %></span>
+                    <% })} %>
+                  </div>
+                </div>
+                <b>&gt;</b>
+              </div>
+            </div>
+          </div>
+          <div class="pFourth">
+            <div class="left">
+              <span>参数</span>
+            </div>
+            <div class="right">
+              <div class="top">
+                <span class="ellipsis"><%= parameter %></span>
+                <b>&gt;</b>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cardComment"></div>
+        <div class="cardShop"></div>
+      </main>
+      <!-- 顶部按键 -->
+      <section class="top_btn">
+        <div class="back">
+          <div class="back_btn">&lt;</div>
+          <span>|</span>
+          <div class="menu"><span><i></i><b></b><i></i></span></div>
+        </div>
+        <div class="search">
+          <i class="iconfont icon-search"></i>
+          <span>|</span>
+          <div>
+            <input type="text" placeholder="r7000" />
+          </div>
+        </div>
+        <div class="cart">
+          <div class="cart_btn">
+            <i class="iconfont icon-cart"></i>
+          </div>
+        </div>
+      </section>
+      <!-- 底部按键 -->
+      <section class="bottom_btn">
+        <div class="left">
+          <div class="shop">
+            <i class="iconfont icon-shop active"></i>
+            <span>店铺</span>
+          </div>
+          <div class="wang">
+            <i class="iconfont icon-wang"></i>
+            <span>客服</span>
+          </div>
+          <div class="favor">
+            <i class="iconfont icon-favor"></i>
+            <span>收藏</span>
+          </div>
+        </div>
+        <div class="right">
+          <div class="add">
+            <span>加入购物车</span>
+          </div>
+          <div class="buy">
+            <% let snum; if(cnum){ snum='领券' }else{snum='立即'} %>
+            <p><%= snum %>购买</p>
+            <% if(cnum){ %>
+            <p>券后￥<%= cnum %>起</p>
+            <% } %>
+          </div>
+        </div>
+      </section>
+      <!-- 底部 -->
+      <footer class="footer">
+        <div class="top">
+          <div class="line"></div>
+          <div class="content">
+            <i class="iconfont icon-piclight"></i>
+            <span>详情</span>
+          </div>
+          <div class="line"></div>
+        </div>
+        <% if(details){if(details.describe){ %>
+        <p><%= '“' + details.describe + '”' %></p>
+        <% }} %>
+        <div class="content">
+          <% if(introduce){ introduce.forEach(i=>{%>
+          <div class="pic">
+            <img src="<%= i.src %>" alt="" />
+          </div>
+          <% })} %>
+        </div>
+      </footer>
+
+      <!-- 规格选择 -->
+      <div class="guige">
+        <div class="content">
+          <div class="top">
+            <div class="pic"> 
+              <% let src = ''; if(swiper[0]){src = swiper[0].src} %>
+              <img src="<%= src %>" alt="">
+            </div>
+            <div class="right">
+              <div class="close">&times;</div>
+              <div class="cont">
+                <div class="price">
+                  <span class="rmb">￥</span>
+                  <span class="num"><%= pnum %></span>
+                </div>
+                <div class="stock">有货</div>
+                <div class="tips">
+                  <i class="sel">已选:</i>
+                  <% optionnames.forEach(i=>{ %>
+                    <u></u>
+                  <% }) %>
+                  <i class="psel">请选择:</i>
+                    <% optionnames.forEach(i=>{ %>
+                      <b><%= i %></b>
+                    <% }) %>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="optionlist">
+            <div class="box">
+              <% optionnames.forEach((i,index)=>{ %>
+                <div class="option">
+                  <div class="oname"><%= i %></div>
+                  <div class="opconts">
+                    <% options[index].forEach((i,index)=>{ %>
+                      <sapn class="opcont" data-i="<%= index %>"><%= i %></sapn>
+                    <% }) %>
+                  </div>
+                </div>
+              <% }) %>
+              <div class="quantity">
+                <div class="oname">购买数量</div>
+                <div class="btn">
+                  <span class="sub disabled">-</span>
+                  <input type="text" value="1">
+                  <span class="add">+</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="add">加入购物车</div>
+            <div class="buy"><%= snum %>购买</div>
+          </div>
+        </div>
+        <div class="bg"></div>
+      </div>
+    </div>
+    <div class="alertbox"></div>
+  </body>
+  <script src="/js/custom.js"></script>
+  <script src="/js/detail.js"></script>
+</html>

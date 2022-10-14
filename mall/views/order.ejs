@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>订单列表</title>
+    <link rel="stylesheet" href="/css/iconfont/iconfont.css" />
+    <link rel="stylesheet" href="/css/reset3.0.css" />
+    <link rel="stylesheet" href="/css/order.css" />
+    <script src="/axios/dist/axios.min.js"></script>
+    <script src="/qs/dist/qs.js"></script>
+  </head>
+  <body>
+    <%# console.log(data) %>
+    <div class="container">
+      <!-- 头部 -->
+      <header class="header">
+        <div class="search">
+          <div class="frame">
+            <i class="iconfont icon-search"></i>
+            <input type="text" placeholder="搜索全部订单" />
+          </div>
+          <div class="btn">搜索</div>
+        </div>
+        <nav class="nav">
+          <div class="all active"><span>全部</span></div>
+          <div class="payment"><span>待付款</span></div>
+          <div class="deliver"><span>待发货</span></div>
+          <div class="receipt"><span>待收货</span></div>
+          <div class="evaluate"><span>待评价</span></div>
+        </nav>
+      </header>
+      <!-- 主体 -->
+      <div class="main">
+        <% const xr = i => { %>
+          <div class="order" data-id="<%= i.id %>">
+            <div class="top">
+              <div class="left">
+                <div class="pic">
+                  <img src="/img/cart/tmall_icon.webp" alt="" />
+                </div>
+                <div class="title">
+                  <% let shoptitle='店铺';if(i.shoptitle){shoptitle = i.shoptitle} %>
+                  <span><%= shoptitle %></span>
+                  <i class="iconfont icon-right"></i>
+                </div>
+              </div>
+              <% let status='店铺';if(i.orderStatus){status = i.orderStatus} %>
+              <div class="status"><%= status %></div>
+            </div>
+            <div class="goods">
+              <div class="details">
+                <div class="content">
+                  <div class="pic">
+                    <% let src='店铺';if(i.src){src = i.src} %>
+                    <img src="<%= src %>" alt="" />
+                  </div>
+                  <div class="parameter">
+                    <% let title='无';if(i.title){title = i.title} %>
+                    <div class="title ellipsis"><%= title %></div>
+                    <% let option='无';if(i.options){option = i.options} %>
+                    <div class="option"><%= option %></div>
+                    <div class="supplement">
+                      <div class="text"></div>
+                      <span class="label">七天无理由退换</span>
+                    </div>
+                  </div>
+                  <div class="total">
+                    <div class="price">
+                      <% let price='0';if(i.price){price = i.price} %>
+                      <% let num='0';if(i.num){num = i.num} %>
+                      <span>￥<b><%= parseInt(price) %></b><%= (price - parseInt(price)).toFixed(2).slice(1) %></span>
+                    </div>
+                    <div class="count">&times;<%= num %></div>
+                  </div>
+                </div>
+                <div class="Insurance">保障服务</div>
+              </div>
+              <div class="price">
+                <% let allprice = price * num %>
+                <% let coupon = 0;if(i.coupon){coupon=i.coupon} %>
+                <% let payment = allprice - coupon %>
+                <span class="allnum"><i>总价</i>￥<b><%= parseInt(allprice) %></b><%= (allprice - parseInt(allprice)).toFixed(2).slice(1) %>，</span>
+                <span class="discount"><i>优惠</i>￥<b><%= coupon %></b>.00，</span>
+                <span class="payment"><i>实付款</i>￥<b><%= parseInt(payment) %></b><%= (payment - parseInt(payment)).toFixed(2).slice(1) %></span>
+              </div>
+            </div>
+            <% const btn_list = {del:'删除订单',kp:'申请开票',hq:'卖了换钱','pj active':'评价',sel:'查看物流',df:'朋友代付',qx:'取消订单','fk active':'付款'} %>
+            <% let btn = [],s;if(s=i.orderStatus){if(s=='等待买家付款'){btn=['df','qx','fk active']} %>
+            <% if(s=='交易成功'){btn=['kp','hq','pj active','sel','del']} %>
+            <% if(s=='交易关闭'){btn=['del']}} %>
+            <div class="btn_list">
+              <% if(btn.length > 3){ %>
+              <div class="more">更多</div>
+              <% } %>
+              <div class="btn">
+                <% btn.forEach((i,index)=>{ if(index<3){ %>
+                <div class="<%= i %>"><%= btn_list[i] %></div>
+                <% }}) %>
+              </div>
+              <% if(btn.length > 3){ %>
+              <div class="morebtn">
+                <% btn.forEach((i,index)=>{if(index>2){ %>
+                  <div class="<%= i %>"><%= btn_list[i] %></div>
+                  <% }}) %>
+              </div>
+              <% } %>
+            </div>
+          </div>
+        <% } %>
+        <% if(data){data.forEach(i=>{ if(i.orderStatus=='等待买家付款'){xr(i)} })} %>
+        <% if(data){data.forEach(i=>{ if(i.orderStatus!='等待买家付款'){xr(i)} })} %>
+      </div>
+    </div>
+  </body>
+  <script src="/js/order.js"></script>
+</html>

@@ -1,0 +1,108 @@
+.login_container {
+  padding: 0 20px;
+}
+.login_container a {
+  color: #ff5000;
+  font-size: 16px;
+}
+.login_container .logo {
+  text-align: center;
+}
+.login_container .logo div {
+  width: 80px;
+  height: 80px;
+  background: url(../img/login/logo.png) no-repeat;
+  background-size: contain;
+  margin: 40px auto 0;
+}
+.login_container .sms div select {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60px;
+  height: 100%;
+  border: 0;
+  background: url(../img/login/arrow.png) no-repeat right center;
+  background-size: 24px;
+  color: transparent;
+}
+.login_container .sms div select option {
+  color: #555;
+}
+.login_container .sms div a {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+.login_container .sms .phone {
+  position: relative;
+}
+.login_container .sms .phone::before {
+  content: attr(data-content);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: 14px;
+  text-align: center;
+}
+.login_container .sms .phone input {
+  padding-left: 60px;
+}
+.login_container .apwd div i {
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  right: 20px;
+  transform: translateY(-50%) rotateY(180deg);
+}
+.login_container .login {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 14px;
+  margin-top: 15px;
+}
+.login_container form {
+  position: relative;
+}
+.login_container form > .sms > div,
+.login_container form > .apwd > div {
+  position: relative;
+  margin-top: 40px;
+  border-bottom: 1px solid #ff5000;
+}
+.login_container form input {
+  border: 0;
+  width: 100%;
+  line-height: 30px;
+  font-size: 16px;
+  padding-left: 5px;
+}
+.login_container form .btn {
+  height: 45px;
+  border-radius: 35px;
+  background: linear-gradient(90deg, #ff9000, #ff5000);
+  color: #fff;
+  margin: 20px 0 30px;
+}
+.login_container form .agreement {
+  position: relative;
+  padding-left: 25px;
+  font-size: 14px;
+}
+.login_container form .agreement i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 15px;
+}
+.login_container form .agreement i.icon-roundcheckfill {
+  font-size: 15;
+  color: #ff5000;
+}
+.login_container form .agreement label {
+  color: #666;
+}

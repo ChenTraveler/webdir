@@ -1,0 +1,105 @@
+@font-face {
+  font-family: "iconfont"; /* Project id  */
+  src: url('iconfont.ttf?t=1665506176319') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-favorfill:before {
+  content: "\e64b";
+}
+
+.icon-favor:before {
+  content: "\e64c";
+}
+
+.icon-locationfill:before {
+  content: "\e650";
+}
+
+.icon-roundcheckfill:before {
+  content: "\e656";
+}
+
+.icon-roundclosefill:before {
+  content: "\e658";
+}
+
+.icon-search:before {
+  content: "\e65c";
+}
+
+.icon-shop:before {
+  content: "\e676";
+}
+
+.icon-wang:before {
+  content: "\e678";
+}
+
+.icon-back:before {
+  content: "\e679";
+}
+
+.icon-cascades:before {
+  content: "\e67c";
+}
+
+.icon-list:before {
+  content: "\e682";
+}
+
+.icon-right:before {
+  content: "\e6a3";
+}
+
+.icon-cart:before {
+  content: "\e6af";
+}
+
+.icon-home:before {
+  content: "\e6b8";
+}
+
+.icon-round:before {
+  content: "\e6d7";
+}
+
+.icon-we:before {
+  content: "\e6f5";
+}
+
+.icon-attentionfill:before {
+  content: "\e73c";
+}
+
+.icon-triangledownfill:before {
+  content: "\e79b";
+}
+
+.icon-triangleupfill:before {
+  content: "\e79c";
+}
+
+.icon-piclight:before {
+  content: "\e7b7";
+}
+
+.icon-peoplelist:before {
+  content: "\e7be";
+}
+
+.icon-wode-copy:before {
+  content: "\e64a";
+}
+
+.icon-no_eye:before {
+  content: "\e6ad";
+}
+

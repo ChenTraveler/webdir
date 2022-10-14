@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>确认订单</title>
+    <link rel="stylesheet" href="/css/iconfont/iconfont.css" />
+    <link rel="stylesheet" href="/css/reset3.0.css" />
+    <link rel="stylesheet" href="/css/settlement.css" />
+    <script src="/axios/dist/axios.min.js"></script>
+    <script src="/qs/dist/qs.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- 地址栏 -->
+      <div class="address">
+        <div class="left">
+          <div class="icon">
+            <i class="iconfont icon-locationfill"></i>
+          </div>
+        </div>
+        <div class="right">
+          <p class="user"><span class="name">堃</span><span class="phone">18012345678</span></p>
+          <p class="text ellipsis-2">
+            <span>江西省南昌市青山湖区艾溪湖管理处中兴科技产业园3号楼2楼</span>
+            <i class="iconfont icon-right"></i>
+          </p>
+        </div>
+      </div>
+
+      <!-- 主体 -->
+      <div class="main">
+        <div class="store">
+          <div class="top">
+            <div class="left">
+              <div class="pic">
+                <img src="/img/cart/tmall_icon.webp" alt="" />
+              </div>
+              <div class="title ellipsis">神舟电脑旗舰店</div>
+            </div>
+          </div>
+          <div class="goods">
+            <div class="pic">
+              <img src="/img/index/more_goods1.webp" alt="" />
+            </div>
+            <div class="details">
+              <div class="title ellipsis-2">【高端】神舟战神ZX10/G10系列笔记本电脑 RTX3070/RTX3070Ti/RTX3080可选英特尔12代酷睿i5/i7 2.5K高刷大屏</div>
+              <div class="model">
+                <div>
+                  <div>颜色分类:战神;硬盘容量:512G固态硬盘;内存容量:16GB;套餐类型:战神Z7M-CU5NA:10300H/GTX1650/IPS高清屏15.6时</div>
+                </div>
+              </div>
+              <div class="bottom">
+                <div class="price">
+                  <span class="rmb">￥</span>
+                  <span class="num">299</span>
+                </div>
+                <div class="count">
+                  <img class="reduce" src="../img/cart/reduce.png" alt="" />
+                  <input type="text" value="1" />
+                  <img class="add" src="../img/cart/add.png" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 底部 -->
+      <div class="bottom">
+        <div class="total">
+          <div class="text">
+            <span class="count">共2件，</span>
+            <span>合计:</span>
+          </div>
+          <div class="price">
+            <span class="rmb">￥</span>
+            <span class="num">8099</span>
+            <span class="smallnum">.00</span>
+          </div>
+        </div>
+        <div class="btn">提交订单</div>
+      </div>
+    </div>
+    <!-- 弹窗 -->
+    <alert class="alertbox">
+      <div class="alert">
+        <div class="txt">请确认支付</div>
+        <div class="btn">
+          <button type="button" class="rej">取消支付</button>
+          <button type="button" class="res">确认支付</button>
+        </div>
+      </div>
+      <div class="bg"></div>
+    </alert>
+  </body>
+  <script src="/js/settlement.js"></script>
+</html>

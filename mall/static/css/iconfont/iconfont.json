@@ -1,0 +1,170 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "29930",
+      "name": "favor_fill",
+      "font_class": "favorfill",
+      "unicode": "e64b",
+      "unicode_decimal": 58955
+    },
+    {
+      "icon_id": "29931",
+      "name": "favor",
+      "font_class": "favor",
+      "unicode": "e64c",
+      "unicode_decimal": 58956
+    },
+    {
+      "icon_id": "29935",
+      "name": "location_fill",
+      "font_class": "locationfill",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "29941",
+      "name": "round_check_fill",
+      "font_class": "roundcheckfill",
+      "unicode": "e656",
+      "unicode_decimal": 58966
+    },
+    {
+      "icon_id": "29943",
+      "name": "round_close_fill",
+      "font_class": "roundclosefill",
+      "unicode": "e658",
+      "unicode_decimal": 58968
+    },
+    {
+      "icon_id": "29947",
+      "name": "search",
+      "font_class": "search",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
+      "icon_id": "30438",
+      "name": "shop",
+      "font_class": "shop",
+      "unicode": "e676",
+      "unicode_decimal": 58998
+    },
+    {
+      "icon_id": "30440",
+      "name": "wang",
+      "font_class": "wang",
+      "unicode": "e678",
+      "unicode_decimal": 59000
+    },
+    {
+      "icon_id": "30441",
+      "name": "back",
+      "font_class": "back",
+      "unicode": "e679",
+      "unicode_decimal": 59001
+    },
+    {
+      "icon_id": "30444",
+      "name": "cascades",
+      "font_class": "cascades",
+      "unicode": "e67c",
+      "unicode_decimal": 59004
+    },
+    {
+      "icon_id": "30450",
+      "name": "list",
+      "font_class": "list",
+      "unicode": "e682",
+      "unicode_decimal": 59010
+    },
+    {
+      "icon_id": "32305",
+      "name": "right",
+      "font_class": "right",
+      "unicode": "e6a3",
+      "unicode_decimal": 59043
+    },
+    {
+      "icon_id": "32471",
+      "name": "cart",
+      "font_class": "cart",
+      "unicode": "e6af",
+      "unicode_decimal": 59055
+    },
+    {
+      "icon_id": "33516",
+      "name": "home",
+      "font_class": "home",
+      "unicode": "e6b8",
+      "unicode_decimal": 59064
+    },
+    {
+      "icon_id": "38743",
+      "name": "round",
+      "font_class": "round",
+      "unicode": "e6d7",
+      "unicode_decimal": 59095
+    },
+    {
+      "icon_id": "61147",
+      "name": "we",
+      "font_class": "we",
+      "unicode": "e6f5",
+      "unicode_decimal": 59125
+    },
+    {
+      "icon_id": "176307",
+      "name": "attention_fill",
+      "font_class": "attentionfill",
+      "unicode": "e73c",
+      "unicode_decimal": 59196
+    },
+    {
+      "icon_id": "573576",
+      "name": "triangle_down_fill",
+      "font_class": "triangledownfill",
+      "unicode": "e79b",
+      "unicode_decimal": 59291
+    },
+    {
+      "icon_id": "573577",
+      "name": "triangle_up_fill",
+      "font_class": "triangleupfill",
+      "unicode": "e79c",
+      "unicode_decimal": 59292
+    },
+    {
+      "icon_id": "833475",
+      "name": "pic_light",
+      "font_class": "piclight",
+      "unicode": "e7b7",
+      "unicode_decimal": 59319
+    },
+    {
+      "icon_id": "1005714",
+      "name": "people_list",
+      "font_class": "peoplelist",
+      "unicode": "e7be",
+      "unicode_decimal": 59326
+    },
+    {
+      "icon_id": "6525526",
+      "name": "我的",
+      "font_class": "wode-copy",
+      "unicode": "e64a",
+      "unicode_decimal": 58954
+    },
+    {
+      "icon_id": "16618555",
+      "name": "no_eye",
+      "font_class": "no_eye",
+      "unicode": "e6ad",
+      "unicode_decimal": 59053
+    }
+  ]
+}
