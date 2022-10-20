@@ -149,7 +149,8 @@ body {
   margin: 0 3vw 3vw 0;
 }
 .container .main .order .goods .details .content .pic img {
-  width: 100%;
+  width: 28vw;
+  height: 28vw;
 }
 .container .main .order .goods .details .content .parameter {
   width: 20vw;

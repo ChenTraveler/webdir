@@ -147,7 +147,7 @@ Waterfall.prototype._add = function (data) {
 const getcookie = objname => {
   let arr
   if (document.cookie.includes(';')) {
-    arr = document.cookie.replaceAll('; ',';').split(';')
+    arr = document.cookie.replaceAll('; ', ';').split(';')
   } else {
     arr = document.cookie.split()
   }
@@ -156,11 +156,13 @@ const getcookie = objname => {
   })
   let str
   arr.forEach(i => {
-    i.forEach((e, index) => {   
+    i.forEach((e, index) => {
       if (e == objname) {
-        str= i[index+1]
+        str = i[index + 1]
       }
     })
   })
   return str
 }
+
+

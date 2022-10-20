@@ -48,14 +48,19 @@ const pa = sql => {
     })
   })
     .then(data => {
-      // 实例化对象
-      new Waterfall(goods_list, data.data, true)
-      document.querySelectorAll('.baby_container .main .goods_list .model .title').forEach(function (i) {
-        i.className = i.className.replaceAll('ellipsis', 'ellipsis-3')
-      })
-      document.querySelectorAll('.baby_container .main .goods_list .model .advantage').forEach(function (i) {
-        i.innerHTML = '包邮'
-      })
+      if (data.data.message) {
+        alert(data.data.message)
+        window.location.href = '/login'
+      } else {
+        // 实例化对象
+        new Waterfall(goods_list, data.data, true)
+        document.querySelectorAll('.baby_container .main .goods_list .model .title').forEach(function (i) {
+          i.className = i.className.replaceAll('ellipsis', 'ellipsis-3')
+        })
+        document.querySelectorAll('.baby_container .main .goods_list .model .advantage').forEach(function (i) {
+          i.innerHTML = '包邮'
+        })
+      }
     })
     .catch(err => {
       throw err

@@ -1,7 +1,7 @@
 // 发送请求函数
 const pa = (sql, callback) => {
   axios({
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded', Authorization: localStorage.getItem('token') },
     method: 'post',
     url: '/cart',
     data: Qs.stringify({

@@ -249,4 +249,3 @@ jies.onclick = () => {
   })
   window.location.href = '/settlement'
 }
-

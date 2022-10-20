@@ -3,6 +3,8 @@ const postRouter = express.Router()
 const mysql = require('../db/db')
 const cookieParser = require('cookie-parser')
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+const jwt_decode = require('jwt-decode')
 
 postRouter.use(express.urlencoded({ extended: false }))
 postRouter.use(cookieParser())
@@ -13,6 +15,12 @@ let setdb = (db, sql, parameter = null, callback) => {
     if (err) throw err
     callback && callback(d)
   })
+}
+
+// 定义生成 token 的方法
+const gettoken = (uname, secretKey, time) => {
+  const tokenStr = jwt.sign({ uname }, secretKey, { expiresIn: time })
+  return tokenStr
 }
 
 // 注册
@@ -59,24 +67,18 @@ postRouter.post('/login', (req, res) => {
     if (err) throw err
     setdb(db, sqlsel, null, d => {
       if (d[0]) {
-        if (req.cookies.islogin != d[0].username) {
-          if (phone) {
-            setdb(db, sqlupd, null)
-            res.cookie('islogin', d[0].username, { domain: 'localhost', maxAge: 60000 * 60 * 24 })
-            // sessionStorage.setItem('loginname', d[0].username)
-            res.send(`登入成功，尊敬的${d[0].username}，欢迎访问!`)
-          } else {
-            if (bcrypt.compareSync(pwd, d[0].password)) {
-              setdb(db, sqlupd, null)
-              res.cookie('islogin', d[0].username, { domain: 'localhost', maxAge: 60000 * 60 * 24 })
-              // sessionStorage.setItem('loginname', d[0].username)
-              res.send(`登入成功，尊敬的${d[0].username}，欢迎访问!`)
-            } else {
-              res.send('密码错误，请重新输入')
-            }
-          }
+        if (phone) {
+          setdb(db, sqlupd, null)
+          const token = gettoken(d[0].username, 'chenmy', `2h`)
+          res.send({ code: 200, msg: '登录成功', token: 'Bearer ' + token })
         } else {
-          res.send('该用户已登录')
+          if (bcrypt.compareSync(pwd, d[0].password)) {
+            setdb(db, sqlupd, null)
+            const token = gettoken(d[0].username, 'chenmy', `2h`)
+            res.send({ code: 200, msg: '登录成功', token: 'Bearer ' + token })
+          } else {
+            res.send('密码错误，请重新输入')
+          }
         }
       } else {
         res.send('用户未注册，请注册后登录')
@@ -153,6 +155,13 @@ postRouter.post('/cart', (req, res) => {
       d.affectedRows == 1 || d[0] ? res.send(d) : res.send(false)
     })
   })
+})
+
+// token验证
+postRouter.post('/token', (req, res) => {
+  const token = req.headers['authorization']
+  const { uname } = jwt_decode(token)
+  res.send(uname)
 })
 
 module.exports = postRouter

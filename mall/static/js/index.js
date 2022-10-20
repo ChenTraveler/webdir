@@ -69,16 +69,3 @@ Waterfall.prototype._cre = data => {
   }
   return li
 }
-
-axios({
-  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-  method: 'POST',
-  url: '/index'
-})
-  .then(data => {
-    // 实例化对象
-    new Waterfall(uls, data.data)
-  })
-  .catch(err => {
-    throw err
-  })

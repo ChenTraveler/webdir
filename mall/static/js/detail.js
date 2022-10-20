@@ -8,7 +8,7 @@ const cart_btn = document.querySelector('.details_container .top_btn .cart_btn')
 // 发送请求函数
 const pa = (url, data, callback) => {
   axios({
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded', Authorization: localStorage.getItem('token') },
     method: 'post',
     url,
     data: Qs.stringify(data)
@@ -23,7 +23,7 @@ const pa = (url, data, callback) => {
 
 // 跳转购物车
 cart_btn.onclick = () => {
-  if (getcookie('islogin')) {
+  if (localStorage.getItem('token')) {
     window.location.href = `/cart`
   } else {
     alert('请先登录')
@@ -232,11 +232,11 @@ addcart.onclick = () => {
         coupon = document.querySelector('.Coupon .num').innerHTML
       }
     }
-    if (getcookie('islogin')) {
+    if (localStorage.getItem('token')) {
       pa(
         '/details',
         {
-          uname: getcookie('islogin'),
+          uname,
           shoptitle,
           title,
           src,
@@ -284,22 +284,22 @@ buy.onclick = () => {
         coupon = document.querySelector('.Coupon .num').innerHTML
       }
     }
-    if (getcookie('islogin')) {
-      // pa(
-      //   '/cart',
-      //   {
-      //     sql: `insert into cart (username,shoptitle,title,src,options,price,num,coupon,stock,goodsid,isjs) values (?,?,?,?,?,?,?,?,?,?,"t")`
-      //   },
-      //   d => {
-      //     if (d.data) {
-      //       // createtc('成功加入购物车', 'add')
-      //       location.href = '/sett'
-      //     } else {
-      //       createtc('因网络问题，加载失败，请稍后重试', 'add')
-      //     }
-      //     closetc()
-      //   }
-      // )
+    if (localStorage.getItem('token')) {
+      pa(
+        '/cart',
+        {
+          sql: `insert into cart (username,shoptitle,title,src,options,price,num,coupon,stock,goodsid,isjs) values ("${uname}","${shoptitle}","${title}","${src}","${option.slice(1)}","${pricenum.innerHTML}","${ipt.value}","${coupon}","${stock}","${id}","t")`
+        },
+        d => {
+          if (d.data) {
+            // createtc('成功加入购物车', 'add')
+            location.href = '/settlement'
+          } else {
+            createtc('因网络问题，加载失败，请稍后重试', 'add')
+          }
+          closetc()
+        }
+      )
     } else {
       alert('请先登录')
       location.href = '/login'

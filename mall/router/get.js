@@ -2,10 +2,11 @@ const express = require('express')
 const path = require('path')
 const db = require('../db/db')
 const cookieParser = require('cookie-parser')
-const gettRouter = express.Router()
+const getRouter = express.Router()
 const mysql = require('../db/db')
+const jwt_decode = require('jwt-decode')
 
-gettRouter.use(cookieParser())
+getRouter.use(cookieParser())
 
 // 定义操作数据函数
 let setdb = (db, sql, parameter = null, callback) => {
@@ -27,7 +28,7 @@ const sql_sclist = 'select * from goods order by collections desc limit 3'
 const sql_xplist = 'select * from goods where isnew="t" order by recommend desc limit 3'
 
 // 配置首页
-gettRouter.get('/index', (req, res) => {
+getRouter.get('/index', (req, res) => {
   // 定义数据容器
   let data = {}
   mysql((err, db) => {
@@ -67,7 +68,7 @@ gettRouter.get('/index', (req, res) => {
 })
 
 // 配置分页
-gettRouter.get('/baby', (req, res) => {
+getRouter.get('/baby', (req, res) => {
   // 定义数据容器
   let data = {}
   mysql((err, db) => {
@@ -90,7 +91,7 @@ mysql((err, db) => {
   setdb(db, sql_goods, '%index%', d => {
     d.forEach((i, index) => {
       // 根据跳转路由设置路由
-      gettRouter.get(i.route, (req, res) => {
+      getRouter.get(i.route, (req, res) => {
         // 定义数据容器
         let data = {}
         data.data = d[index]
@@ -117,9 +118,16 @@ mysql((err, db) => {
   })
 })
 
+let uname = null
+getRouter.get('/token', (req, res) => {
+  const { token } = req.query
+  uname = jwt_decode(token).uname
+  res.send(true)
+})
+
 const sql_cart = 'select * from cart where username=? and isjs="f" order by shoptitle'
 // 配置购物车页面
-gettRouter.get(`/cart`, (req, res) => {
+getRouter.get(`/cart`, (req, res) => {
   // 定义数据容器
   let data = {}
   mysql((err, db) => {
@@ -127,7 +135,8 @@ gettRouter.get(`/cart`, (req, res) => {
     setdb(db, sql_uptcart, null, d => {
       // 获取数据
       //req.cookies.islogin
-      setdb(db, sql_cart, 'admin', d => {
+      console.log(uname)
+      setdb(db, sql_cart, uname, d => {
         data.data = d
         res.render('cart', data)
       })
@@ -136,15 +145,15 @@ gettRouter.get(`/cart`, (req, res) => {
 })
 
 // 配置订单页
-const sql_order = `select * from cart where isjs="t" and orderflag="t" order by resTime desc`
-gettRouter.get(`/order`, (req, res) => {
+const sql_order = `select * from cart where isjs="t" and orderflag="t" and username=? order by resTime desc`
+getRouter.get(`/order`, (req, res) => {
   // 定义数据容器
   let data = {}
   mysql((err, db) => {
     if (err) throw err
     setdb(db, sql_uptcart, null, d => {
       // 获取数据
-      setdb(db, sql_order, null, d => {
+      setdb(db, sql_order, localStorage.getItem('token'), d => {
         data.data = d
         res.render('order', data)
       })
@@ -153,24 +162,20 @@ gettRouter.get(`/order`, (req, res) => {
 })
 
 // 配置结算页
-gettRouter.get(`/settlement`, (req, res) => {
+getRouter.get(`/settlement`, (req, res) => {
   // 定义数据容器
   let data = {}
   res.render('settlement', data)
 })
 
 // 配置登录页面
-gettRouter.get('/login', (req, res) => {
-  // 定义数据容器
-  let data = {}
-  res.render('login', data)
+getRouter.get('/login', (req, res) => {
+  res.render('login')
 })
 
 // 配置注册页面
-gettRouter.get('/rej', (req, res) => {
-  // 定义数据容器
-  let data = {}
-  res.render('rej', data)
+getRouter.get('/rej', (req, res) => {
+  res.render('rej')
 })
 
-module.exports = gettRouter
+module.exports = getRouter

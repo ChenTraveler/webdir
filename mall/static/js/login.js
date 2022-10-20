@@ -28,12 +28,21 @@ let a = (phone, uname, pwd) => {
         if (data.data.includes('未注册')) {
           window.location.href = '/rej'
         }
-        if (data.data.includes('登入成功')) {
-          window.history.go(-1)
-          location.replace(document.referrer)
-        }
       } else {
-        alert('用户名或者密码错误，请重新输入')
+        if (data.data.msg.includes('登录成功')) {
+          localStorage.setItem('token', data.data.token)
+          axios({
+            method: 'get',
+            url: `/token?token=${data.data.token}`
+          })
+            .then(d => d)
+            .catch(err => { 
+              throw err
+            })
+          window.location.href = `/index`
+        } else {
+          alert('用户名或者密码错误，请重新输入')
+        }
       }
     })
     .catch(err => alert('因为网络问题，登录失败，清稍后重试'))
@@ -45,7 +54,6 @@ btn.onclick = e => {
   if (form.className == 'active_sms') {
     let reg = /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/
     if (reg.test(phone.value)) {
-      console.log(vnum)
       if (verification.value != '' && verification.value == vnum) {
         if (check.className.includes('icon-roundcheckfill')) {
           a(phone.value)
